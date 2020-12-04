@@ -3,7 +3,7 @@ import React from 'react';
 function RightTable(props) {
 
     return (
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div className="table-wrapper-scroll-y my-custom-scrollbar">
 
         <table className="table table-bordered table-striped mb-0">
             <thead>

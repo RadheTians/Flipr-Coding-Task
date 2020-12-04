@@ -2,7 +2,7 @@ import React from 'react';
 
 function Delivery(props) {
 
-    if(props.data=="zero"){
+    if(props.data==="zero"){
         return (
             <div class="row delivery-zero">
                 <div class="col-6">
