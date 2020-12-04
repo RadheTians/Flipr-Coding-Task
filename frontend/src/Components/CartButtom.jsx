@@ -5,8 +5,8 @@ function CartButtom(props){
     return (
       <div className="col">
         <div className="cart-buttom">
-          <p className="cart-head">DEL</p>
-          <p className="cart-body">500</p>
+          <p className="cart-head">{props.data.text}</p>
+          <p className="cart-body">{props.data.counter}</p>
         </div>
       </div>
     );

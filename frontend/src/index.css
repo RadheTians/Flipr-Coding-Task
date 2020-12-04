@@ -55,3 +55,8 @@
   bottom: 0;
   border-left: 2px dashed rgb(12, 228, 48);
 }
+
+.img-background {
+  background-color: darkgray;
+  padding: 5px;
+}

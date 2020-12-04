@@ -23,7 +23,7 @@ function Header(props) {
                         <a className="nav-link" href="#">Transporters</a>
                     </li>
                     <li>
-                        <img src={profile} width="30" height="30" className="rounded-circle" alt="" loading="lazy"/>
+                        <img src={profile} width="35" height="35" className="rounded-circle img-background" alt="" loading="lazy"/>
                     </li>
                     <li>
                     <span className="badge badge-light">^</span>
