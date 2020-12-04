@@ -7,6 +7,7 @@ import Delivery from './delivery';
 
 function LeftTable(props) {
 
+    console.log(props.data)
     return (
         <div className="shadow-sm">
             <img src={destination} width="35" height="35" className="rounded-circle img-background" alt="" loading="lazy"/>

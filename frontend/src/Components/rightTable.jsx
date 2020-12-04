@@ -4,28 +4,31 @@ import LeftTable from './leftTable';
 function RightTable(props) {
 
     const apiData = props.data;
+    const status = apiData[0]["scan"];
     return (
-        <div className="container-fluid">
+        <div className="container">
             <div className="row">
                 <div className="col-4">
-                    <LeftTable/>
+                    <LeftTable data={status}/>
                 </div>
                 <div className="col-8">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
 
-                    <table className="table table-bordered table-striped mb-0">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                    <table className="table table-bordered table-striped">
+                        <tr className="table-head">
+                            <td scope="col">AWB NUMBER</td>
+                            <td scope="col">TRANSPORTER</td>
+                            <td scope="col">SOURCE</td>
+                            <td scope="col">DESTINATION</td>
+                            <td scope="col">BRAND</td>
+                            <td scope="col">START DATE</td>
+                            <td scope="col">ETD</td>
+                            <td>STATUS</td>
                         </tr>
-                        </thead>
                         <tbody>
                         {apiData.map((item) => (
-                        <tr>
-                            <td>{item.awbno}</td>
+                        <tr className="table-body">
+                            <td>#{item.awbno}</td>
                             <td>{item.carrier}</td>
                             <td>{item.from}</td>
                             <td>{item.to}</td>

@@ -1,7 +1,17 @@
 .header {
-  font-size: 20px;
+  font-size: 15px;
+  font-weight: bold;
 }
-
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
 .cart-buttom {
   background-color: blue;
   border-radius: 5px;
@@ -59,4 +69,15 @@
 .img-background {
   background-color: darkgray;
   padding: 5px;
+}
+.table-head {
+  font-size: 8px;
+  font-weight: lighter;
+}
+.table-body {
+  font-size: 10px;
+  font-weight: 500;
+}
+.table-view {
+  margin-left: 20px;
 }

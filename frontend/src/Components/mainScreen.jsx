@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CartButtom from './CartButtom';
 import { useSelector, useDispatch } from 'react-redux';
 import RightTable from './rightTable';
@@ -10,54 +10,62 @@ import data from '../data';
 function MainScreen(props) {
 
     const dispatch = useDispatch();
+    const [filter, setFilter] = useState('DEL');
 
     //dispatch(callAPI("t.raman@iiitmanipur.ac.in", "Radhe Raman Tiwari"));
     const apiData = data["data"];
-    let DEL = 0;
-    let INT = 0;
-    let OOD = 0;
-    let DEX = 0;
-    let NFI = 0;
+    let DEL = []
+    let INT = []
+    let OOD = []
+    let DEX = []
+    let NFI = []
     for (let index = 0; index < apiData.length; index++) {
         if(apiData[index]["current_status_code"]==="DEL"){
-            DEL++;
+            DEL.push(apiData[index]);
         } else if(apiData[index]["current_status_code"]==="INT"){
-            INT++;
+            INT.push(apiData[index]);
         } else if(apiData[index]["current_status_code"]==="OOD"){
-            OOD++;
+            OOD.push(apiData[index]);
         } else if(apiData[index]["current_status_code"]==="DEX"){
-            DEX++;
+            DEX.push(apiData[index]);
         } else {
-            NFI++;
+            NFI.push(apiData[index]);
         }
     }
+    const apis = DEL;
+    const submitHandler = (e) => {
+        setFilter("")
+    }
+    console.log(filter)
     return (
         <>
         <div className="container">
             <div className="row cart-set">
+                <CartButtom 
+                onClick={submitHandler}
+                    data={{
+                        "counter": DEL.length,
+                        "text": "DEL"
+                    }}/>
                 <CartButtom data={{
-                    "counter": DEL,
-                    "text": "DEL"
-                }}/>
-                <CartButtom data={{
-                    "counter": INT,
+                    "counter": INT.length,
                     "text": "INT"
                 }}/>
                 <CartButtom data={{
-                    "counter": OOD,
+                    "counter": OOD.length,
                     "text": "OOD"
                 }}/>
                 <CartButtom data={{
-                    "counter": DEX,
+                    "counter": DEX.length,
                     "text": "DEX"
                 }}/>
                 <CartButtom data={{
-                    "counter": NFI,
+                    "counter": NFI.length,
                     "text": "NFI"
                 }}/>
             </div>
         </div>
-        <RightTable data={apiData}/>
+        <RightTable data={apis}/>
         </>
     );
 }
