@@ -6,7 +6,7 @@ function Delivery(props) {
     if(data.status_detail==="DELIVERED"){
         return (
             <>
-            <div className="hr-line"/>
+            <div className="hr-line"/> 
             <div class="border delivery-zero">
                 <pre className="delivery-text"> {data.status_detail}    {data.time}</pre>
             </div>

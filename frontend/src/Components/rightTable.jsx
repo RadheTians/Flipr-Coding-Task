@@ -34,17 +34,17 @@ function RightTable(props) {
                     </div> 
                 </div> 
                 <div className="col-8">
-                <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                <div className="table-wrapper-scroll-y my-custom-scrollbar border">
 
                     <table className="table">
                         <tr className="table-head">
-                            <th scope="col-2">AWB NUMBER <i className="arrow-small down"></i></th>
-                            <td scope="col">TRANSPORTER</td>
-                            <td scope="col">SOURCE</td>
-                            <td scope="col">DESTINATION</td>
-                            <td scope="col">BRAND</td>
-                            <td scope="col">START DATE</td>
-                            <td scope="col">ETD</td>
+                            <td>AWB NUMBER <i className="arrow-small down"></i></td>
+                            <td>TRANSPORTER</td>
+                            <td>SOURCE</td>
+                            <td>DESTINATION</td>
+                            <td>BRAND</td>
+                            <td>START DATE</td>
+                            <td>ETD</td>
                             <td>STATUS</td>
                         </tr>
                         <tbody>

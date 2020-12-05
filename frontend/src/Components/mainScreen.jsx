@@ -10,29 +10,34 @@ function MainScreen(props) {
     const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
+    let DEL = []
+    let INT = []
+    let OOD = []
+    let DEX = []
+    let NFI = []
+    const [apiData,setApiData] = useState([]);
+    const [filter, setFilter] = useState('DEL');
+    const [shipments,setShipment] = useState([]);
 
     useEffect(() => {
         Axios.post("https://f0ztti2nsk.execute-api.ap-south-1.amazonaws.com/v1/consignment/fetch",
             {email : email},
             config
         ).then(res => {
+            for (let index = 0; index < res.data.length; index++) {
+                if(res.data[index]["current_status_code"]==="DEL"){
+                    DEL.push(res.data[index]);
+                }
+            }
+            setShipment(DEL);
             setApiData(res.data);
+            
         });
         return () => {
         //
         };
     }, []);
-    let DEL = []
-    let INT = []
-    let OOD = []
-    let DEX = []
-    let NFI = []
-    const [filter, setFilter] = useState('DEL');
-    const [apiData,setApiData] = useState([]);
-    const [shipments,setShipment] = useState(DEL);
-  
-   
-    
+
     for (let index = 0; index < apiData.length; index++) {
         if(apiData[index]["current_status_code"]==="DEL"){
             DEL.push(apiData[index]);
