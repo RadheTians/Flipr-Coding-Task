@@ -7,3 +7,22 @@ The design is for a shipment dashboard where the various shipments are shown whi
 ## Project Status
 
 https://flipr-coding-task.herokuapp.com/
+
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/Screenshot from 2020-12-06 02-49-28.png">
+</p>
+
+<p align="center">
+  <img src="screenshots/Screenshot from 2020-12-06 02-49-44.png">
+</p>
+
+<p align="center">
+  <img src="screenshots/Screenshot from 2020-12-06 02-49-50.png">
+</p>
+
+<p align="center">
+  <img src="screenshots/Screenshot from 2020-12-06 02-49-56.png">
+</p>
+
