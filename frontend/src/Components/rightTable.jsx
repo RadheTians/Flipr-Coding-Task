@@ -4,19 +4,19 @@ import LeftTable from './leftTable';
 function RightTable(props) {
 
     const apiData = props.data;
-    const status = apiData[0]["scan"];
+   
     return (
         <div className="container">
             <div className="row">
                 <div className="col-4">
-                    <LeftTable data={status}/>
+                    <LeftTable/>
                 </div>
                 <div className="col-8">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
 
                     <table className="table table-bordered table-striped">
                         <tr className="table-head">
-                            <td scope="col">AWB NUMBER</td>
+                            <td scope="col">AWB NUMBER <i className="arrow down"></i></td>
                             <td scope="col">TRANSPORTER</td>
                             <td scope="col">SOURCE</td>
                             <td scope="col">DESTINATION</td>

@@ -4,10 +4,10 @@ import Cookie from 'js-cookie';
 
 import APIReducer from './Action/reducer';
 
-const userInfo = Cookie.getJSON('userInfo') || null;
+const apiInfo = Cookie.getJSON('APIInfo') || null;
 
 const initialState = {
-  data: { userInfo },
+  data: { apiInfo },
 };
 const reducer = combineReducers({
   api: APIReducer,

@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from 'react';
+import Axios from "axios";
 import CartButtom from './CartButtom';
-import { useSelector, useDispatch } from 'react-redux';
 import RightTable from './rightTable';
-
-import callAPI  from '../Action/APIEndPoint';
-
-import data from '../data';
 
 function MainScreen(props) {
 
-    const dispatch = useDispatch();
-    const [filter, setFilter] = useState('DEL');
+    const token = "tTU3gFVUdP";
+    const email = "t.raman@iiitmanipur.ac.in";
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
 
-    //dispatch(callAPI("t.raman@iiitmanipur.ac.in", "Radhe Raman Tiwari"));
-    const apiData = data["data"];
+    useEffect(() => {
+        Axios.post("https://f0ztti2nsk.execute-api.ap-south-1.amazonaws.com/v1/consignment/fetch",
+            {email : email},
+            config
+        ).then(res => {
+            setApiData(res.data);
+        });
+        return () => {
+        //
+        };
+    }, []);
+    const [filter, setFilter] = useState('DEL');
+    const [apiData,setApiData] = useState([]);
+    const [shipments,setShipment] = useState([]);
+  
     let DEL = []
     let INT = []
     let OOD = []
     let DEX = []
     let NFI = []
+    
     for (let index = 0; index < apiData.length; index++) {
         if(apiData[index]["current_status_code"]==="DEL"){
             DEL.push(apiData[index]);
@@ -32,40 +45,49 @@ function MainScreen(props) {
             NFI.push(apiData[index]);
         }
     }
-    const apis = DEL;
-    const submitHandler = (e) => {
-        setFilter("")
+
+    const DELHandler = (e) => {
+        setShipment(DEL);
     }
-    console.log(filter)
+    const INTHandler = (e) => {
+        setShipment(INT);
+    }
+    const OODHandler = (e) => {
+        setShipment(OOD);
+    }
+    const DEXHandler = (e) => {
+        setShipment(DEX);
+    }
+    const NFIHandler = (e) => {
+        setShipment(NFI);
+    }
+    
+    
     return (
         <>
-        <div className="container">
-            <div className="row cart-set">
-                <CartButtom 
-                onClick={submitHandler}
-                    data={{
-                        "counter": DEL.length,
-                        "text": "DEL"
-                    }}/>
-                <CartButtom data={{
-                    "counter": INT.length,
-                    "text": "INT"
-                }}/>
-                <CartButtom data={{
-                    "counter": OOD.length,
-                    "text": "OOD"
-                }}/>
-                <CartButtom data={{
-                    "counter": DEX.length,
-                    "text": "DEX"
-                }}/>
-                <CartButtom data={{
-                    "counter": NFI.length,
-                    "text": "NFI"
-                }}/>
-            </div>
+        <div className="btn-group cart-set" role="group" aria-label="Basic example">
+            <button type="button" onClick={DELHandler} class="btn cart-buttom">
+                <p className="cart-head">DEL</p>
+                <p className="cart-body">{DEL.length}</p>
+            </button>
+            <button type="button" onClick={INTHandler} class="btn cart-buttom">
+                <p className="cart-head">INT</p>
+                <p className="cart-body">{INT.length}</p>
+            </button>
+            <button type="button" onClick={OODHandler} class="btn cart-buttom">
+                <p className="cart-head">OOD</p>
+                <p className="cart-body">{OOD.length}</p>
+            </button>
+            <button type="button" onClick={DEXHandler} class="btn cart-buttom">
+                <p className="cart-head">DEX</p>
+                <p className="cart-body">{DEX.length}</p>
+            </button>
+            <button type="button" onClick={NFIHandler} class="btn cart-buttom">
+                <p className="cart-head">NFI</p>
+                <p className="cart-body">{NFI.length}</p>
+            </button>
         </div>
-        <RightTable data={apis}/>
+        <RightTable data={shipments}/>
         </>
     );
 }

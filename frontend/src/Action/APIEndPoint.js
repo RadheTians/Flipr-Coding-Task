@@ -19,21 +19,20 @@ const config = {
     headers: { Authorization: `Bearer ${token}` }
 };
 
-const callAPI = (email, name) => async(dispatch) => {
+const callAPI = (email) => async(dispatch) => {
 
     dispatch({ type: API_SIGNIN_REQUEST, payload: { email} });
     try {
         const { data } = await Axios.post(
-            "https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/"+name,
+            "https://f0ztti2nsk.execute-api.ap-south-1.amazonaws.com/v1/consignment/fetch",
             {email : email},
             config
             );
-            console.log(data)
-        if(data.status==='success'){
+        if(data){
             dispatch({ type: API_SIGNIN_SUCCESS, payload: data.data });
-            Cookie.set('APIInfo', JSON.stringify(data.data));
+            Cookie.set('APIInfo', JSON.stringify(data));
         } else {
-            dispatch({ type: API_SIGNIN_FAIL, payload: data.message });
+            dispatch({ type: API_SIGNIN_FAIL, payload: "error" });
         }
         
     } catch (error) {
