@@ -118,7 +118,7 @@ function MainScreen(props) {
         </div>
         <TableView data={{
             shipments:shipments,
-            scan:scan}}/>
+            scams:scan}}/>
         </>
     );
 }

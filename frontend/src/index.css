@@ -70,8 +70,23 @@
   display: block;
 }
 
-.delivery-text {
+.delivery-zero-status {
   font-size: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+.delivery-zero-date {
+  font-size: 10px;
+  text-align: center;
+}
+
+.delivery-one-status {
+  font-size: 10px;
+  text-align: center;
+}
+.delivery-one-date {
+  font-size: 10px;
+  text-align: center;
 }
 
 .delivery-zero {

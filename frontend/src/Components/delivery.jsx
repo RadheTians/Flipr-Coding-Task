@@ -9,7 +9,8 @@ function Delivery(props) {
             <>
             <div className="hr-line"/> 
             <div class="border delivery-zero">
-                <pre className="delivery-text"> {data.status_detail}    {moment.utc(data.time).local().format("DD-MM-YYYY HH:mm")}</pre>
+                <div className="delivery-zero-status">{data.location}</div> 
+                <div className="delivery-zero-date">{moment.utc(data.time).local().format("DD-MM-YYYY HH:mm")}</div> 
             </div>
             </>
         );
@@ -18,7 +19,8 @@ function Delivery(props) {
             <>
             <div className="hr-line"/>
             <div class="border delivery-one">
-               <pre className="delivery-text"> {data.status_detail}     {moment.utc(data.time).local().format("DD-MM-YYYY HH:mm")}</pre>
+                <div className="delivery-one-status">{data.location}</div> 
+                <div className="delivery-one-date">{moment.utc(data.time).local().format("DD-MM-YYYY HH:mm")}</div> 
             </div>
             </>
         );

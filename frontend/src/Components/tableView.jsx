@@ -8,18 +8,19 @@ import Delivery from './delivery';
 function TableView(props) {
 
     const apiData = props.data.shipments;
-    const [delivery,setDelivery] = useState(props.data.scan);
-    useEffect(() => {
-        setDelivery(props.data.scan);
-        return () => {
-        //
-        };
-    }, []);
+    const delivery = props.data.scams;
+    const [deliverys,setDelivery] = useState(props.data.scams);
+    // useEffect(() => {
+    //     setDelivery();
+    //     return () => {
+    //     //
+    //     };
+    // }, []);
     let line = {
         position: 'absolute',
         zIndex: -1,
         top: 20,
-        bottom: 200 - delivery.length*38,
+        bottom: deliverys.length>0?170 - deliverys.length*35:170 - delivery.length*35,
         borderLeft: '2px dashed rgb(12, 228, 48)'
       };
     return (
@@ -31,9 +32,12 @@ function TableView(props) {
                         
                         <div className="container">
                             <div style={line}></div>
-                            {delivery.map((item) => (
-                                <Delivery data={item}/>
-                            ))}
+                            {deliverys.length>0?deliverys.map((item,index) => (
+                                <Delivery key={index} data={item}/>
+                            )): delivery.map((item,index) => (
+                                <Delivery key={index} data={item}/>
+                            ))
+                            }
                         </div>
                         <img src={home} width="35" height="35" className="rounded-circle home-background" alt="" loading="lazy"/>
                     </div> 
@@ -53,8 +57,8 @@ function TableView(props) {
                             <td>STATUS</td>
                         </tr>
                         <tbody>
-                        {apiData.map((item) => (
-                        <tr className="table-body" onClick={() => item.scan? setDelivery(item.scan):[]}>
+                        {apiData.map((item,index) => (
+                        <tr key={index} className="table-body" onClick={() => item.scan? setDelivery(item.scan):[]}>
                             <td>#{item.awbno}</td>
                             <td>{item.carrier}</td>
                             <td>{item.from}</td>
