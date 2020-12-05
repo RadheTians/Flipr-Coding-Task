@@ -1,15 +1,30 @@
 import React from 'react';
-import LeftTable from './leftTable';
+import destination from '../Assets/destination.svg';
+import home from '../Assets/warehouse.svg'
+
+import Delivery from './delivery';
 
 function RightTable(props) {
 
     const apiData = props.data;
+    const delivery = apiData.length > 0? apiData[0]["scan"]: [];
+
    
     return (
         <div className="container">
             <div className="row">
                 <div className="col-4">
-                    <LeftTable/>
+                <div className="shadow-sm">
+                    <img src={destination} width="35" height="35" className="rounded-circle img-background" alt="" loading="lazy"/>
+                    
+                    <div className="container">
+                        <div className="line"></div>
+                        {delivery.map((item) => (
+                            <Delivery data={item}/>
+                        ))}
+                    </div>
+                    <img src={home} width="35" height="35"  className="rounded-circle img-background" alt="" loading="lazy"/>
+                </div> 
                 </div>
                 <div className="col-8">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">

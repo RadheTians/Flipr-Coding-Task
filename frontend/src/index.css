@@ -67,9 +67,10 @@
 }
 
 .delivery-zero {
-  background-color: chartreuse;
+  background-color: rgb(235, 245, 177);
   margin-top: 10px;
   margin-bottom: 10px;
+  color: rgb(124, 231, 142);
 }
 
 .delivery-one {
