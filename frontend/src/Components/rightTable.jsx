@@ -9,23 +9,38 @@ function RightTable(props) {
     const apiData = props.data;
     const delivery = apiData.length > 0? apiData[0]["scan"]: [];
 
+    let dropzoneStyle = {
+       
+        padding: 5,
+        marginTop: 20,
+        marginLeft: 5,
+        marginBottom: 10
+      };
+    let line = {
+        position: 'absolute',
+        zIndex: -1,
+        top: 10,
+        bottom: 100-delivery.length*20,
+        borderLeft: '2px dashed rgb(12, 228, 48)'
+      };
+
    
     return (
         <div className="container">
             <div className="row">
-                <div className="col-4">
-                <div className="shadow-sm">
-                    <img src={destination} width="35" height="35" className="rounded-circle img-background" alt="" loading="lazy"/>
-                    
-                    <div className="container">
-                        <div className="line"></div>
-                        {delivery.map((item) => (
-                            <Delivery data={item}/>
-                        ))}
-                    </div>
-                    <img src={home} width="35" height="35"  className="rounded-circle img-background" alt="" loading="lazy"/>
+                <div className="col-4 left-table">
+                    <div className="border shadow-sm">
+                        <img src={destination} width="35" height="35" className="rounded-circle img-background" alt="" loading="lazy"/>
+                        
+                        <div className="container">
+                            <div style={line}></div>
+                            {delivery.map((item) => (
+                                <Delivery data={item}/>
+                            ))}
+                        </div>
+                        <img src={home} width="35" height="35" style={dropzoneStyle}  className="rounded-circle" alt="" loading="lazy"/>
+                    </div> 
                 </div> 
-                </div>
                 <div className="col-8">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
 
@@ -49,8 +64,8 @@ function RightTable(props) {
                             <td>{item.to}</td>
                             <td>{item.carrier}</td>
                             <td>{item.pickup_date}</td>
-                            <td>{item.extra_fields.expected_delivery_date}</td>
-                            <td>{item.current_status}</td>
+                            <td>{item.extra_fields?item.extra_fields.expected_delivery_date:""}</td>
+                            <td className={item.current_status==="Delivered"?"green-status":""}>{item.current_status}</td>
                         </tr>
                         ))}
                         

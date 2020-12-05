@@ -67,28 +67,47 @@
 }
 
 .delivery-zero {
-  background-color: rgb(235, 245, 177);
+  background-color: rgb(206, 239, 240);
   margin-top: 10px;
+  margin-left: 50px;
   margin-bottom: 10px;
   color: rgb(124, 231, 142);
 }
 
 .delivery-one {
   margin-top: 10px;
+  margin-left: 50px;
   margin-bottom: 10px;
 }
 
 .line {
   position: absolute;
   z-index: -1;
-  top: 0;
+  top: 10px;
   bottom: 0;
   border-left: 2px dashed rgb(12, 228, 48);
+}
+
+.hr-line {
+  margin-top: 15px;
+  border-top: 1px solid rgb(12, 228, 48);
+  width: 50px;
+  height: 0px;
+  position: absolute;
 }
 
 .img-background {
   background-color: darkgray;
   padding: 5px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.home-background {
+  background-color: darkgray;
+  padding: 5px;
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-bottom: 10px;
 }
 .table-head {
   font-size: 8px;
@@ -100,4 +119,12 @@
 }
 .table-view {
   margin-left: 20px;
+}
+.green-status {
+  color: green;
+}
+
+.left-table {
+  width: 200px;
+  height: 300px;
 }

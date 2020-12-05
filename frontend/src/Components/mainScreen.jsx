@@ -68,6 +68,7 @@ function MainScreen(props) {
         setShipment(NFI);
     }
     
+    console.log(shipments);
     
     return (
         <>

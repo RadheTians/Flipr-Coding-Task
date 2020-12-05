@@ -11,7 +11,6 @@ function App() {
       <Header/>
       <Switch >
           <Route exact path = "/" component = { MainScreen}/> 
-
       </Switch>
   </Router>
   );

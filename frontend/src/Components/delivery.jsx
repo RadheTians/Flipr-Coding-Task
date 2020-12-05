@@ -5,25 +5,21 @@ function Delivery(props) {
     const data = props.data;
     if(data.status_detail==="DELIVERED"){
         return (
-            <div class="row delivery-zero">
-                <div class="col">
-                    <p className="delivery-text">{data.status_detail}</p>
-                </div>
-                <div class="col">
-                    <p className="delivery-text">{data.time}</p>
-                </div>
-        </div>
+            <>
+            <div className="hr-line"/>
+            <div class="border delivery-zero">
+                <pre className="delivery-text"> {data.status_detail}    {data.time}</pre>
+            </div>
+            </>
         );
     } else {
         return (
-            <div class="row border delivery-one">
-                <div class="col">
-                    <p className="delivery-text">{data.status_detail}</p>
-                </div>
-                <div class="col">
-                    <p className="delivery-text">{data.time}</p>
-                </div>
-        </div>
+            <>
+            <div className="hr-line"/>
+            <div class="border delivery-one">
+               <pre className="delivery-text"> {data.status_detail}     {data.time}</pre>
+            </div>
+            </>
         );
     }
     
