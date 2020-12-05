@@ -22,15 +22,16 @@ function MainScreen(props) {
         //
         };
     }, []);
-    const [filter, setFilter] = useState('DEL');
-    const [apiData,setApiData] = useState([]);
-    const [shipments,setShipment] = useState([]);
-  
     let DEL = []
     let INT = []
     let OOD = []
     let DEX = []
     let NFI = []
+    const [filter, setFilter] = useState('DEL');
+    const [apiData,setApiData] = useState([]);
+    const [shipments,setShipment] = useState(DEL);
+  
+   
     
     for (let index = 0; index < apiData.length; index++) {
         if(apiData[index]["current_status_code"]==="DEL"){
@@ -47,45 +48,52 @@ function MainScreen(props) {
     }
 
     const DELHandler = (e) => {
+        setFilter("DEL");
         setShipment(DEL);
     }
     const INTHandler = (e) => {
+        setFilter("INT");
         setShipment(INT);
     }
     const OODHandler = (e) => {
+        setFilter("OOD");
         setShipment(OOD);
     }
     const DEXHandler = (e) => {
+        setFilter("DEX");
         setShipment(DEX);
     }
     const NFIHandler = (e) => {
+        setFilter("NFI");
         setShipment(NFI);
     }
     
     
     return (
         <>
-        <div className="btn-group cart-set" role="group" aria-label="Basic example">
-            <button type="button" onClick={DELHandler} class="btn cart-buttom">
-                <p className="cart-head">DEL</p>
-                <p className="cart-body">{DEL.length}</p>
-            </button>
-            <button type="button" onClick={INTHandler} class="btn cart-buttom">
-                <p className="cart-head">INT</p>
-                <p className="cart-body">{INT.length}</p>
-            </button>
-            <button type="button" onClick={OODHandler} class="btn cart-buttom">
-                <p className="cart-head">OOD</p>
-                <p className="cart-body">{OOD.length}</p>
-            </button>
-            <button type="button" onClick={DEXHandler} class="btn cart-buttom">
-                <p className="cart-head">DEX</p>
-                <p className="cart-body">{DEX.length}</p>
-            </button>
-            <button type="button" onClick={NFIHandler} class="btn cart-buttom">
-                <p className="cart-head">NFI</p>
-                <p className="cart-body">{NFI.length}</p>
-            </button>
+        <div className="cart-set">
+            <div className="btn-group" role="group" aria-label="Basic example">
+                <button type="button" onClick={DELHandler} className={filter==="DEL"? "cart-buttom-zero":"cart-buttom-one"}>
+                    <p className="cart-head">DEL</p>
+                    <p className="cart-body">{DEL.length}</p>
+                </button>
+                <button type="button" onClick={INTHandler} className={filter==="INT"? "cart-buttom-zero":"cart-buttom-one"}>
+                    <p className="cart-head">INT</p>
+                    <p className="cart-body">{INT.length}</p>
+                </button>
+                <button type="button" onClick={OODHandler} className={filter==="OOD"? "cart-buttom-zero":"cart-buttom-one"}>
+                    <p className="cart-head">OOD</p>
+                    <p className="cart-body">{OOD.length}</p>
+                </button>
+                <button type="button" onClick={DEXHandler} className={filter==="DEX"? "cart-buttom-zero":"cart-buttom-one"}>
+                    <p className="cart-head">DEX</p>
+                    <p className="cart-body">{DEX.length}</p>
+                </button>
+                <button type="button" onClick={NFIHandler} className={filter==="NFI"? "cart-buttom-zero":"cart-buttom-one"}>
+                    <p className="cart-head">NFI</p>
+                    <p className="cart-body">{NFI.length}</p>
+                </button>
+            </div>
         </div>
         <RightTable data={shipments}/>
         </>
