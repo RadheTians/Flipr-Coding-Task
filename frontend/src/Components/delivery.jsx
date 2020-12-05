@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 function Delivery(props) {
 
@@ -8,7 +9,7 @@ function Delivery(props) {
             <>
             <div className="hr-line"/> 
             <div class="border delivery-zero">
-                <pre className="delivery-text"> {data.status_detail}    {data.time}</pre>
+                <pre className="delivery-text"> {data.status_detail}    {moment.utc(data.time).local().format("DD-MM-YYYY HH:mm")}</pre>
             </div>
             </>
         );
@@ -17,7 +18,7 @@ function Delivery(props) {
             <>
             <div className="hr-line"/>
             <div class="border delivery-one">
-               <pre className="delivery-text"> {data.status_detail}     {data.time}</pre>
+               <pre className="delivery-text"> {data.status_detail}     {moment.utc(data.time).local().format("DD-MM-YYYY HH:mm")}</pre>
             </div>
             </>
         );

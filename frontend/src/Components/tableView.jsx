@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import destination from '../Assets/img/destination.svg';
 import home from '../Assets/img/warehouse.svg'
+import moment from 'moment';
 
 import Delivery from './delivery';
 
@@ -59,8 +60,8 @@ function TableView(props) {
                             <td>{item.from}</td>
                             <td>{item.to}</td>
                             <td>{item.carrier}</td>
-                            <td>{item.pickup_date}</td>
-                            <td>{item.extra_fields?item.extra_fields.expected_delivery_date:""}</td>
+                            <td>{moment.utc(item.pickup_date).local().format("DD/MM/YYYY")}</td>
+                            <td>{item.extra_fields?moment.utc(item.extra_fields.expected_delivery_date).local().format("DD/MM/YYYY"):""}</td>
                             <td className={item.current_status==="Delivered"?"green-status":""}>{item.current_status}</td>
                         </tr>
                         ))}
