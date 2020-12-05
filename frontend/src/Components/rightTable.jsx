@@ -8,19 +8,11 @@ function RightTable(props) {
 
     const apiData = props.data;
     const delivery = apiData.length > 0? apiData[0]["scan"]: [];
-
-    let dropzoneStyle = {
-       
-        padding: 5,
-        marginTop: 20,
-        marginLeft: 5,
-        marginBottom: 10
-      };
     let line = {
         position: 'absolute',
         zIndex: -1,
-        top: 10,
-        bottom: 100-delivery.length*20,
+        top: 20,
+        bottom: 200 - delivery.length*38,
         borderLeft: '2px dashed rgb(12, 228, 48)'
       };
 
@@ -38,15 +30,15 @@ function RightTable(props) {
                                 <Delivery data={item}/>
                             ))}
                         </div>
-                        <img src={home} width="35" height="35" style={dropzoneStyle}  className="rounded-circle" alt="" loading="lazy"/>
+                        <img src={home} width="35" height="35" className="rounded-circle home-background" alt="" loading="lazy"/>
                     </div> 
                 </div> 
                 <div className="col-8">
                 <div className="table-wrapper-scroll-y my-custom-scrollbar">
 
-                    <table className="table table-bordered table-striped">
+                    <table className="table">
                         <tr className="table-head">
-                            <td scope="col">AWB NUMBER <i className="arrow down"></i></td>
+                            <th scope="col-2">AWB NUMBER <i className="arrow-small down"></i></th>
                             <td scope="col">TRANSPORTER</td>
                             <td scope="col">SOURCE</td>
                             <td scope="col">DESTINATION</td>
