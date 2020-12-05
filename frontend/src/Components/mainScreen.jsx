@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from "axios";
-import CartButtom from './CartButtom';
-import RightTable from './rightTable';
+import TableView from './tableView';
 
 function MainScreen(props) {
 
@@ -101,7 +100,7 @@ function MainScreen(props) {
                 </button>
             </div>
         </div>
-        <RightTable data={shipments}/>
+        <TableView data={shipments}/>
         </>
     );
 }

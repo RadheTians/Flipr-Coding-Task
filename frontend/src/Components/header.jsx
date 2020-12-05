@@ -1,7 +1,7 @@
 import React from 'react';
 
-import logo from '../Assets/logo.svg';
-import profile from '../Assets/profile.svg';
+import logo from '../Assets/img/logo.svg';
+import profile from '../Assets/img/profile.svg';
 
 function Header(props) {
 

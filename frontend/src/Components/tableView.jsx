@@ -1,10 +1,10 @@
 import React from 'react';
-import destination from '../Assets/destination.svg';
-import home from '../Assets/warehouse.svg'
+import destination from '../Assets/img/destination.svg';
+import home from '../Assets/img/warehouse.svg'
 
 import Delivery from './delivery';
 
-function RightTable(props) {
+function TableView(props) {
 
     const apiData = props.data;
     const delivery = apiData.length > 0? apiData[0]["scan"]: [];
@@ -71,4 +71,4 @@ function RightTable(props) {
     );
 }
 
-export default RightTable;
+export default TableView;
