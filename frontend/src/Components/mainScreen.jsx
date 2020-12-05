@@ -17,6 +17,7 @@ function MainScreen(props) {
     const [apiData,setApiData] = useState([]);
     const [filter, setFilter] = useState('DEL');
     const [shipments,setShipment] = useState([]);
+    const [scan,setScan] = useState([]);
 
     useEffect(() => {
         Axios.post("https://f0ztti2nsk.execute-api.ap-south-1.amazonaws.com/v1/consignment/fetch",
@@ -27,6 +28,9 @@ function MainScreen(props) {
                 if(res.data[index]["current_status_code"]==="DEL"){
                     DEL.push(res.data[index]);
                 }
+            }
+            if(DEL.length>0){
+                setScan(DEL[0]["scan"]);
             }
             setShipment(DEL);
             setApiData(res.data);
@@ -52,28 +56,40 @@ function MainScreen(props) {
     }
 
     const DELHandler = (e) => {
+        if(DEL[0]["scan"]){
+            setScan(DEL[0]["scan"]);
+        }
         setFilter("DEL");
         setShipment(DEL);
     }
     const INTHandler = (e) => {
+        if(INT[0]["scan"]){
+            setScan(INT[0]["scan"]);
+        }
         setFilter("INT");
         setShipment(INT);
     }
     const OODHandler = (e) => {
+        if(OOD[0]["scan"]){
+            setScan(OOD[0]["scan"]);
+        }
         setFilter("OOD");
         setShipment(OOD);
     }
     const DEXHandler = (e) => {
+        if(DEX.length>0){
+            setScan(DEX[0]["scan"]);
+        }
         setFilter("DEX");
         setShipment(DEX);
     }
     const NFIHandler = (e) => {
+        if(NFI[0]["scan"]){
+            setScan(NFI[0]["scan"]);
+        }
         setFilter("NFI");
         setShipment(NFI);
     }
-    
-    console.log(shipments);
-    
     return (
         <>
         <div className="cart-set">
@@ -100,7 +116,9 @@ function MainScreen(props) {
                 </button>
             </div>
         </div>
-        <TableView data={shipments}/>
+        <TableView data={{
+            shipments:shipments,
+            scan:scan}}/>
         </>
     );
 }

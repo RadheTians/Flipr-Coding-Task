@@ -143,3 +143,10 @@
   border-radius: 50%;
   display: inline-block;
 }
+.action-show {
+  background-color: #e3eaec;
+}
+.coming-soon {
+  margin-top: 200px;
+  text-align: center;
+}

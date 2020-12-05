@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import destination from '../Assets/img/destination.svg';
 import home from '../Assets/img/warehouse.svg'
 
@@ -6,8 +6,14 @@ import Delivery from './delivery';
 
 function TableView(props) {
 
-    const apiData = props.data;
-    const delivery = apiData.length > 0? apiData[0]["scan"]: [];
+    const apiData = props.data.shipments;
+    const [delivery,setDelivery] = useState(props.data.scan);
+    useEffect(() => {
+        setDelivery(props.data.scan);
+        return () => {
+        //
+        };
+    }, []);
     let line = {
         position: 'absolute',
         zIndex: -1,
@@ -15,8 +21,6 @@ function TableView(props) {
         bottom: 200 - delivery.length*38,
         borderLeft: '2px dashed rgb(12, 228, 48)'
       };
-
-   
     return (
         <div className="container">
             <div className="row">
@@ -49,7 +53,7 @@ function TableView(props) {
                         </tr>
                         <tbody>
                         {apiData.map((item) => (
-                        <tr className="table-body">
+                        <tr className="table-body" onClick={() => item.scan? setDelivery(item.scan):[]}>
                             <td>#{item.awbno}</td>
                             <td>{item.carrier}</td>
                             <td>{item.from}</td>
